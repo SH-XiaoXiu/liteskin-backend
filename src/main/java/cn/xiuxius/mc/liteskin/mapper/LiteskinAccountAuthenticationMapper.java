@@ -1,7 +1,6 @@
 package cn.xiuxius.mc.liteskin.mapper;
 
 import cn.xiuxius.mc.liteskin.entity.LiteskinAccountAuthentication;
-import cn.xiuxius.mc.liteskin.enumeration.AuthenticationScope;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.jetbrains.annotations.NotNull;
 

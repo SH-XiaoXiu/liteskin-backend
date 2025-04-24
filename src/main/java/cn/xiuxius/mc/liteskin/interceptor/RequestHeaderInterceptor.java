@@ -6,6 +6,7 @@ import cn.xiuxius.mc.liteskin.properties.SecurityProperties;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -18,7 +19,7 @@ public class RequestHeaderInterceptor implements HandlerInterceptor {
     private final SecurityProperties securityProperties;
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object handler) {
         String token = request.getHeader("Authorization");
         if (token == null || token.isEmpty()) {
             return true;
@@ -37,10 +38,8 @@ public class RequestHeaderInterceptor implements HandlerInterceptor {
                 request.setAttribute("account-email", jwt.getPayload("account-email"));
             }
 
-            return true;
-        } else {
-            return true;
         }
+        return true;
     }
 
 
