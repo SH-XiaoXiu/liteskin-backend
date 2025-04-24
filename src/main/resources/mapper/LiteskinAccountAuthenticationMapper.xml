@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xiuxius.mc.liteskin.mapper.LiteskinAccountAuthenticationMapper">
+
+    <select id="selectAuthentication" resultType="cn.xiuxius.mc.liteskin.entity.LiteskinAccountAuthentication">
+            select * from liteskin_account_authentication where account_id = #{accountId} and scope = #{scope}
+    </select>
+</mapper>

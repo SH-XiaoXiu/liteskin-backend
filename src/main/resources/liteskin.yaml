@@ -1,0 +1,11 @@
+database:
+  host: amc.xiuxius.cn
+  port: 3306
+  database: liteskindev
+  username: liteskindev
+  password: liteskindev
+
+security:
+  account:
+    password-salt: liteskin
+    jwt-key: liteskin
