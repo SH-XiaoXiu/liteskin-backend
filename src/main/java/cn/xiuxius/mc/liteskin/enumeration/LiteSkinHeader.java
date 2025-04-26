@@ -1,4 +1,4 @@
-package cn.xiuxius.mc.liteskin.constant;
+package cn.xiuxius.mc.liteskin.enumeration;
 
 import lombok.Getter;
 

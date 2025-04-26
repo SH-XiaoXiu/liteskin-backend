@@ -5,7 +5,7 @@ import cn.xiuxius.mc.liteskin.enumeration.ResponseCode;
 import cn.xiuxius.mc.liteskin.request.LiteSkinLoginRequest;
 import cn.xiuxius.mc.liteskin.service.liteskin.LiteSkinAccountService;
 import cn.xiuxius.mc.liteskin.vo.BaseResponse;
-import cn.xiuxius.mc.liteskin.vo.LiteSkinLoginVO;
+import cn.xiuxius.mc.liteskin.vo.liteskin.LiteSkinLoginVO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +36,20 @@ public class AccountLoginController {
         return result
             .map(r -> BaseResponse.ok(LiteSkinLoginVO.of(r)))
             .orElseGet(() -> BaseResponse.fail(ResponseCode.AUTHENTICATION_FAILED));
+    }
+
+    @Operation(summary = "通行密钥预处理")
+    @PostMapping("/prePasskey")
+    public BaseResponse<LiteSkinLoginVO> prePasskey() {
+        //TODO 实现
+        return BaseResponse.ok();
+    }
+
+    @Operation(summary = "通过通行密钥")
+    @PostMapping("/byPasskey")
+    public BaseResponse<LiteSkinLoginVO> loginByPasskey(@Validated @RequestBody LiteSkinLoginRequest request) {
+        //TODO 实现
+        return BaseResponse.ok();
     }
 
 

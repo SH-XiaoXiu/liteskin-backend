@@ -40,6 +40,8 @@ public class LiteSkinAccountServiceImpl implements LiteSkinAccountService {
 
         if (success) {
             Map<String,Object> payload = new HashMap<>();
+            payload.put("accountId", account.getId());
+            payload.put("accountEmail", account.getEmail());
             String token = JWTUtil.createToken(payload, securityProperties.getAccount().getJwtKey().getBytes(StandardCharsets.UTF_8));
             return Optional.of(new LiteSkinAccountAuthenticateDTO()
                     .setAccountId(account.getId())

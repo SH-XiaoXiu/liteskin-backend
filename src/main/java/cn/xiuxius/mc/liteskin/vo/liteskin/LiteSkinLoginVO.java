@@ -1,4 +1,4 @@
-package cn.xiuxius.mc.liteskin.vo;
+package cn.xiuxius.mc.liteskin.vo.liteskin;
 
 import cn.xiuxius.mc.liteskin.dto.LiteSkinAccountAuthenticateDTO;
 import io.swagger.v3.oas.annotations.media.Schema;

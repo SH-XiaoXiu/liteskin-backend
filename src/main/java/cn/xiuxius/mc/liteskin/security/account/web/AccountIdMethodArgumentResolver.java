@@ -1,7 +1,7 @@
 package cn.xiuxius.mc.liteskin.security.account.web;
 
 
-import cn.xiuxius.mc.liteskin.constant.LiteSkinHeader;
+import cn.xiuxius.mc.liteskin.enumeration.LiteSkinHeader;
 import cn.xiuxius.mc.liteskin.exception.MissingLiteSkinHeaderException;
 import cn.xiuxius.mc.liteskin.security.account.anno.LSAccountId;
 import org.springframework.core.MethodParameter;
@@ -31,13 +31,14 @@ public class AccountIdMethodArgumentResolver implements HandlerMethodArgumentRes
             } else {
                 return null;
             }
-        }
-        try {
-            return Long.parseLong(userIdStr);
-        } catch (NumberFormatException e) {
-            String parameterName = parameter.getParameterName();
-            if (parameterName == null) parameterName = "Unnamed parameter of type " + parameter.getParameterType().getName();
-            throw new MethodArgumentTypeMismatchException(userIdStr, parameter.getParameterType(), parameterName, parameter, e);
+        }else {
+            try {
+                return Long.parseLong(userIdStr);
+            } catch (NumberFormatException e) {
+                String parameterName = parameter.getParameterName();
+                if (parameterName == null) parameterName = "Unnamed parameter of type " + parameter.getParameterType().getName();
+                throw new MethodArgumentTypeMismatchException(userIdStr, parameter.getParameterType(), parameterName, parameter, e);
+            }
         }
     }
 }

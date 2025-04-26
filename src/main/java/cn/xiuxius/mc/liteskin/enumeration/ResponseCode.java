@@ -8,10 +8,9 @@ public enum ResponseCode {
 
     SUCCESS(HttpStatus.OK,"success"),
     BAD_REQUEST(HttpStatus.BAD_REQUEST,"bad request"),
-    AUTHENTICATION_FAILED(HttpStatus.UNAUTHORIZED,"authentication failed");
-
-
-
+    AUTHENTICATION_FAILED(HttpStatus.UNAUTHORIZED,"authentication failed"),
+    ACCOUNT_NOT_EXIST(HttpStatus.NOT_FOUND,"account not exist")
+    ;
 
     private final HttpStatus httpStatus;
 

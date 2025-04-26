@@ -2,6 +2,7 @@ package cn.xiuxius.mc.liteskin.interceptor;
 
 import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.JWTUtil;
+import cn.xiuxius.mc.liteskin.enumeration.LiteSkinHeader;
 import cn.xiuxius.mc.liteskin.properties.SecurityProperties;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,7 +21,17 @@ public class RequestHeaderInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object handler) {
-        String token = request.getHeader("Authorization");
+
+        //先清除所有ls的头
+
+        request.getHeaderNames().asIterator().forEachRemaining(headerName -> {
+            if (headerName.startsWith("ls-")) {
+                request.removeAttribute(headerName);
+            }
+        });
+
+        String bearerAuth = request.getHeader("Authorization");
+        String token = bearerAuth == null ? null : bearerAuth.replace("Bearer ", "");
         if (token == null || token.isEmpty()) {
             return true;
         }
@@ -30,12 +41,12 @@ public class RequestHeaderInterceptor implements HandlerInterceptor {
 
             JWT jwt = JWTUtil.parseToken(token);
 
-            if (jwt.getPayload("account-id") != null) {
-                request.setAttribute("account-id", jwt.getPayload("account-id"));
+            if (jwt.getPayload("accountId") != null) {
+                request.setAttribute(LiteSkinHeader.LS_ACCOUNT_ID.getName(), jwt.getPayload("accountId"));
             }
 
-            if (jwt.getPayload("account-email") != null) {
-                request.setAttribute("account-email", jwt.getPayload("account-email"));
+            if (jwt.getPayload("accountEmail") != null) {
+                request.setAttribute(LiteSkinHeader.LS_ACCOUNT_EMAIL.getName(), jwt.getPayload("accountEmail"));
             }
 
         }

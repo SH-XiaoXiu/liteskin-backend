@@ -1,7 +1,7 @@
 package cn.xiuxius.mc.liteskin.security.account.web;
 
 
-import cn.xiuxius.mc.liteskin.constant.LiteSkinHeader;
+import cn.xiuxius.mc.liteskin.enumeration.LiteSkinHeader;
 import cn.xiuxius.mc.liteskin.exception.MissingLiteSkinHeaderException;
 import cn.xiuxius.mc.liteskin.security.account.anno.LSAccount;
 import cn.xiuxius.mc.liteskin.security.account.model.CurrentAccount;
